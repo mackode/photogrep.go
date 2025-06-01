@@ -16,7 +16,7 @@ type clickImage struct {
 func newClickImage(image *canvas.Image, cbleft, cbright func()) *clickImage {
 	ci := &clickImage{}
 	ci.ExtendBaseWidget(ci)
-	ci.image = img
+	ci.image = image
 	ci.cbleft = cbleft
 	ci.cbright = cbright
 	return ci

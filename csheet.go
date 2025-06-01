@@ -18,7 +18,7 @@ type csheet struct {
 
 func NewCsheet(app fyne.App) *csheet {
 	return &csheet{
-		selected: map[string]bool,
+		selected: map[string]bool{},
 		app:      app,
 	}
 }
@@ -42,7 +42,7 @@ func (cs *csheet) newPick(fileName string) *fyne.Container {
 	if err != nil {
 		panic(err)
 	}
-	thumnail := imaging.Thumnail(img, int(ThumbSize), int(ThumbSize), imaging.Lanczos)
+	thumnail := imaging.Thumbnail(img, int(ThumbSize), int(ThumbSize), imaging.Lanczos)
 
 	image := canvas.NewImageFromImage(thumnail)
 	image.FillMode = canvas.ImageFillContain

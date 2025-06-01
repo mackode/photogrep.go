@@ -4,13 +4,13 @@ import (
 	"bufio"
 	"flag"
 	"fmt"
+	"os"
+	"strings"
+
 	"fyne.io/fyne/v2"
 	"fyne.io/fyne/v2/app"
 	"fyne.io/fyne/v2/container"
-	"fyne.io/fyne/v2/dialog"
 	"fyne.io/fyne/v2/widget"
-	"os"
-	"strings"
 )
 
 func main() {

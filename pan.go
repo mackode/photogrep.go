@@ -1,17 +1,18 @@
 package main
 
 import (
+	"image/color"
+
 	"fyne.io/fyne/v2"
 	"fyne.io/fyne/v2/canvas"
 	"fyne.io/fyne/v2/container"
 	"fyne.io/fyne/v2/widget"
-	"image/color"
 )
 
 type Pan struct {
 	widget.BaseWidget
-	image *canvas.Image
-	scroll *container.Scroll
+	image        *canvas.Image
+	scroll       *container.Scroll
 	scrollOffset fyne.Position
 }
 
@@ -32,15 +33,15 @@ func (di *Pan) CreateRenderer() fyne.WidgetRenderer {
 }
 
 func (di *Pan) Dragged(e *fyne.DragEvent) {
-	di.scrollOffset = di.scroll.Offset.SubstractXY(e.Dragged.DX, e.Dragged.DY)
+	di.scrollOffset = di.scroll.Offset.SubtractXY(e.Dragged.DX, e.Dragged.DY)
 	di.scroll.Refresh()
 }
 
 func (di *Pan) Center() {
 	w, h := di.image.Size().Width, di.image.Size().Height
 	di.scroll.Offset = fyne.NewPos(
-		float32(w) / 2.0,
-		float32(h) / 2.0,
+		float32(w)/2.0,
+		float32(h)/2.0,
 	)
 	di.scroll.Refresh()
 }
@@ -61,7 +62,7 @@ func (r *panRenderer) MinSize() fyne.Size {
 }
 
 func (r *panRenderer) Refresh() {
-	canvas
+	canvas.Refresh(r.di.image)
 }
 
 func (r *panRenderer) BackgroundColor() color.Color {
